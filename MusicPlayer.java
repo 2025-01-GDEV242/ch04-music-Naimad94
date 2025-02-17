@@ -11,14 +11,13 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * Provide basic playing of MP3 files via the javazoom library.
  * See http://www.javazoom.net/
  * 
- * @author David J. Barnes and Michael Kölling.
- * @version 2016.02.29
+ * @author Damian Davila.
+ * @version 2025.02.17
  */
 public class MusicPlayer
 {
     // The current player. It might be null.
     private AdvancedPlayer player;
-    
     /**
      * Constructor for objects of class MusicFilePlayer
      */
@@ -34,14 +33,17 @@ public class MusicPlayer
      */
     public void playSample(String filename)
     {
-        try {
+        try 
+        {
             setupPlayer(filename);
             player.play(500);
         }
-        catch(JavaLayerException e) {
+        catch(JavaLayerException e) 
+        {
             reportProblem(filename);
         }
-        finally {
+        finally 
+        {
             killPlayer();
         }
     }
@@ -53,25 +55,31 @@ public class MusicPlayer
      */
     public void startPlaying(final String filename)
     {
-        try {
+        try 
+        {
             setupPlayer(filename);
-            Thread playerThread = new Thread() {
+            Thread playerThread = new Thread() 
+            {
                 public void run()
                 {
-                    try {
+                    try 
+                    {
                         player.play(5000);
                     }
-                    catch(JavaLayerException e) {
+                    catch(JavaLayerException e) 
+                    {
                         reportProblem(filename);
                     }
-                    finally {
+                    finally 
+                    {
                         killPlayer();
                     }
                 }
             };
             playerThread.start();
         }
-        catch (Exception ex) {
+        catch (Exception ex) 
+        {
             reportProblem(filename);
         }
     }
@@ -87,15 +95,18 @@ public class MusicPlayer
      */
     private void setupPlayer(String filename)
     {
-        try {
+        try 
+        {
             InputStream is = getInputStream(filename);
             player = new AdvancedPlayer(is, createAudioDevice());
         }
-        catch (IOException e) {
+        catch (IOException e) 
+        {
             reportProblem(filename);
             killPlayer();
         }
-        catch(JavaLayerException e) {
+        catch(JavaLayerException e) 
+        {
             reportProblem(filename);
             killPlayer();
         }
@@ -130,8 +141,10 @@ public class MusicPlayer
      */
     private void killPlayer()
     {
-        synchronized(this) {
-            if(player != null) {
+        synchronized(this) 
+        {
+            if(player != null) 
+            {
                 player.stop();
                 player = null;
             }

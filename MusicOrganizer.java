@@ -4,8 +4,8 @@ import java.util.ArrayList;
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * @author Damian Davila
+ * @version 2025.02.17
  */
 public class MusicOrganizer
 {
@@ -53,7 +53,8 @@ public class MusicOrganizer
      */
     public void playTrack(int index)
     {
-        if(indexValid(index)) {
+        if(indexValid(index)) 
+        {
             Track track = tracks.get(index);
             player.playSample(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
@@ -87,7 +88,8 @@ public class MusicOrganizer
     {
         System.out.println("Track listing: ");
 
-        for(Track track : tracks) {
+        for(Track track : tracks) 
+        {
             System.out.println(track.getDetails());
         }
         System.out.println();
@@ -99,8 +101,10 @@ public class MusicOrganizer
      */
     public void listByArtist(String artist)
     {
-        for(Track track : tracks) {
-            if(track.getArtist().contains(artist)) {
+        for(Track track : tracks) 
+        {
+            if(track.getArtist().contains(artist)) 
+            {
                 System.out.println(track.getDetails());
             }
         }
@@ -112,7 +116,8 @@ public class MusicOrganizer
      */
     public void removeTrack(int index)
     {
-        if(indexValid(index)) {
+        if(indexValid(index)) 
+        {
             tracks.remove(index);
         }
     }
@@ -122,7 +127,8 @@ public class MusicOrganizer
      */
     public void playFirst()
     {
-        if(tracks.size() > 0) {
+        if(tracks.size() > 0) 
+        {
             player.startPlaying(tracks.get(0).getFilename());
         }
     }
@@ -147,15 +153,18 @@ public class MusicOrganizer
         // Set according to whether the index is valid or not.
         boolean valid;
         
-        if(index < 0) {
+        if(index < 0) 
+        {
             System.out.println("Index cannot be negative: " + index);
             valid = false;
         }
-        else if(index >= tracks.size()) {
+        else if(index >= tracks.size()) 
+        {
             System.out.println("Index is too large: " + index);
             valid = false;
         }
-        else {
+        else 
+        {
             valid = true;
         }
         return valid;
@@ -166,7 +175,8 @@ public class MusicOrganizer
         ArrayList<Track> tempTracks = reader.readTracks(folderName, ".mp3");
 
         // Put all thetracks into the organizer.
-        for(Track track : tempTracks) {
+        for(Track track : tempTracks) 
+        {
             addTrack(track);
         }
     }

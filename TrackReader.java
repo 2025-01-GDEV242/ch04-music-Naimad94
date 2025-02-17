@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
  * It is expected that file names of music tracks follow a standard format of artist name
  * and track name, separated by a dash. For example: TheBeatles-HereComesTheSun.mp3
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * @author Damian Davila
+ * @version 2025.02.17
  */
 public class TrackReader
 {
@@ -70,10 +70,12 @@ public class TrackReader
             String titlePart = parts[1];
             // Remove a file-type suffix.
             parts = titlePart.split("\\.");
-            if(parts.length >= 1) {
+            if(parts.length >= 1) 
+            {
                 title = parts[0];
             }
-            else {
+            else 
+            {
                 title = titlePart;
             }
         }
