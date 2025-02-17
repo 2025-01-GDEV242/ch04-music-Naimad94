@@ -16,15 +16,19 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    
+    //private TrackRandom random;
+    //A reader that can read music files and load them in a random order.
 
     /**
      * Create a MusicOrganizer
      */
     public MusicOrganizer()
     {
-        tracks = new ArrayList<>();
+        tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
+        //random = new TrackRandom(); //This creates new object of TrackRandom.
         readLibrary("../audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();

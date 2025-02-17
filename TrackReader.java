@@ -39,8 +39,7 @@ public class TrackReader
                     name.toLowerCase().endsWith(suffix));
         
         // Put all the matching files into the organizer.
-        ArrayList<Track> tracks = 
-            Arrays.stream(audioFiles).
+        ArrayList<Track> tracks = Arrays.stream(audioFiles).
                    map(file -> decodeDetails(file)).
                    collect(Collectors.toCollection(ArrayList::new));
         return tracks;
