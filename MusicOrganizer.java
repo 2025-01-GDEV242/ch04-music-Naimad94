@@ -16,9 +16,6 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
-    
-    //private TrackRandom random;
-    //A reader that can read music files and load them in a random order.
 
     /**
      * Create a MusicOrganizer
@@ -145,7 +142,35 @@ public class MusicOrganizer
     {
         player.stop();
     }
-
+    //Exercise 4.43
+    public void shuffle()
+    {
+        if(tracks.size() > 0)
+        {
+            Random mix = new Random(); //creating new random object and assigning it to mix.
+            int random = mix.nextInt(tracks.size()); //assiging mix to local variable random.
+            player.startPlaying(tracks.get(random).getFilename()); // start playing tracks which should be random.
+        }
+    }
+    
+    /**
+     * public void randomPlay()
+    {
+        if(tracks.size() > 0)
+        {
+            ArrayList<Track> randomTracks = new ArrayList<Track>(tracks);
+            collections.shuffle(randomTracks);
+            do
+            {
+                player.startPlaying(randomTracks.get(0).getFilename());
+                randomTracks.remove(0);
+            }
+            while(!tracks.isEmpty());
+        }
+    }
+    
+     */
+    
     /**
      * Determine whether the given index is valid for the collection.
      * Print an error message if it is not.
